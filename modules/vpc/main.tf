@@ -4,6 +4,12 @@ provider "aws" {
 
 resource "aws_vpc" "myvpc" {
     cidr_block = var.cidr
+    enable_dns_support   = true
+    enable_dns_hostnames = true
+  tags = {
+    Name = "3tierapp_VPC"
+  }
+}
 }
 resource "aws_subnet" "sub1" {
   vpc_id                  = aws_vpc.myvpc.id
